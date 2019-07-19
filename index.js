@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 //ERROR HANDLING
 app.use(errorHandler)
 
-app.listen(80, () => {
+app.listen(PORT, () => {
     console.log(`SERVER is listening on PORT ${PORT}`)
 })
 
