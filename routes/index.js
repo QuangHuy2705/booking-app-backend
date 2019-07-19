@@ -1,1 +1,1 @@
-export { default as eventsRoutes } from './events'
+export { default as orderRoutes } from './orders'

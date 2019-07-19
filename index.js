@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
-import { eventsRoutes } from './routes/index'
+import { orderRoutes } from './routes/index'
 import errorHandler from './handlers/errors'
 
 const app = express()
@@ -9,10 +9,11 @@ const PORT = process.env.PORT || 8081
 
 //APP SETUP
 app.use(cors())
+app.options('*', cors())
 app.use(bodyParser.json())
 
 //ROUTES HANDLING
-app.use('/api/events', eventsRoutes)
+app.use('/api/orders', orderRoutes)
 
 //IF USERS ENTER UNFOUND ROUTES, PASS ERROR TO MIDDLEWARE
 app.use((req, res, next) => {
@@ -24,7 +25,7 @@ app.use((req, res, next) => {
 //ERROR HANDLING
 app.use(errorHandler)
 
-app.listen(PORT, () => {
+app.listen(80, () => {
     console.log(`SERVER is listening on PORT ${PORT}`)
 })
 
