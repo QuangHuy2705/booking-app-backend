@@ -1,6 +1,6 @@
-import database from '../models/index'
+const db = require('../models/index')
 
-export function addOrder(req, res, next) {
+exports.addOrder = function(req, res, next) {
     const { order } = req.body
     console.log(`here`)
     if (!order) {
@@ -9,7 +9,7 @@ export function addOrder(req, res, next) {
             message: 'Bad Request'
         })
     } else {
-        const orderListRef = database.collection('orders').add({
+        const orderListRef = db.collection('orders').add({
             ...order,
             delivered: false
         }).then(ref => {
@@ -19,8 +19,8 @@ export function addOrder(req, res, next) {
     }
 }
 
-export function updateOrder(req, res, next) {
+exports.updateOrder = function(req, res, next) {
     const { orderId } = req.params
-    const orderRef = database.collection('orders').doc(`${orderId}`)
+    const orderRef = db.collection('orders').doc(`${orderId}`)
     const updatedStatus = orderRef.update({ delivered: true }).then(ref => res.status(200).json({ message: 'updated!' }))
 }

@@ -8,4 +8,4 @@ admin.initializeApp({
 
 let db = admin.firestore();
 
-export default db
+module.exports = db

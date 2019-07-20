@@ -1,11 +1,11 @@
-import express from 'express'
-import cors from 'cors'
-import bodyParser from 'body-parser'
-import { orderRoutes } from './routes/index'
-import errorHandler from './handlers/errors'
+const express = require('express')
+const cors = require('cors')
+const bodyParser = require('body-parser')
+const orderRoutes = require('./routes/orders')
+const errorHandler = require('./handlers/errors')
 
 const app = express()
-const PORT = process.env.PORT || 8081
+const PORT = process.env.PORT || 8080
 
 //APP SETUP
 app.use(cors())
@@ -28,5 +28,3 @@ app.use(errorHandler)
 app.listen(PORT, () => {
     console.log(`SERVER is listening on PORT ${PORT}`)
 })
-
-export default app //FOR TESTING
